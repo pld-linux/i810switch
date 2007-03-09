@@ -1,5 +1,6 @@
-Summary:	i810switch - for switching the LCD and external VGA displays on and off.
-Summary(pl.UTF-8):	-
+# TODO: optflags
+Summary:	i810switch - for switching the LCD and external VGA displays on and off
+Summary(pl.UTF-8):	i810switch - program do przełączania wyświetlacza LCD i zewnętrznego VGA
 Name:		i810switch
 Version:	0.6.5
 Release:	0.1
@@ -13,9 +14,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 i810switch is a utility (for intel graphic cards) for switching the LCD
-and external VGA displays on and off under Linux
+and external VGA displays on and off under Linux.
 
 %description -l pl.UTF-8
+i810switch to narzędzie do kart graficznych Intela do włączania i
+wyłączania wyświetlacza LCD oraz zewnętrznego VGA pod Linuksem.
 
 %prep
 %setup -q
@@ -25,6 +28,7 @@ and external VGA displays on and off under Linux
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
