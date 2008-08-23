@@ -1,9 +1,8 @@
-# TODO: optflags
 Summary:	i810switch - for switching the LCD and external VGA displays on and off
 Summary(pl.UTF-8):	i810switch - program do przełączania wyświetlacza LCD i zewnętrznego VGA
 Name:		i810switch
 Version:	0.6.5
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Applications
 Source0:	http://www16.plala.or.jp/mano-a-mano/i810switch/%{name}-%{version}.tar.gz
@@ -22,9 +21,13 @@ wyłączania wyświetlacza LCD oraz zewnętrznego VGA pod Linuksem.
 
 %prep
 %setup -q
+# Remove binaries supplied with sources:
+%{__make} clean
 
 %build
-%{__make}
+%{__make} \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -38,6 +41,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
-#%%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man?/i810*
