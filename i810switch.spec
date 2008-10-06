@@ -2,11 +2,12 @@ Summary:	i810switch - for switching the LCD and external VGA displays on and off
 Summary(pl.UTF-8):	i810switch - program do przełączania wyświetlacza LCD i zewnętrznego VGA
 Name:		i810switch
 Version:	0.6.5
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications
 Source0:	http://www16.plala.or.jp/mano-a-mano/i810switch/%{name}-%{version}.tar.gz
 # Source0-md5:	5ca07aee624589bdce5761c796e5f9a8
+Patch0:		%{name}-macbooksup.patch
 URL:		http://www16.plala.or.jp/mano-a-mano/i810switch.html	
 Requires:	pciutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -21,6 +22,7 @@ wyłączania wyświetlacza LCD oraz zewnętrznego VGA pod Linuksem.
 
 %prep
 %setup -q
+%patch0 -p0
 # Remove binaries supplied with sources:
 %{__make} clean
 
