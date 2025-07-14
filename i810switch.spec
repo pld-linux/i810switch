@@ -22,7 +22,7 @@ wyłączania wyświetlacza LCD oraz zewnętrznego VGA pod Linuksem.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch -P0 -p0
 # Remove binaries supplied with sources:
 %{__make} clean
 
